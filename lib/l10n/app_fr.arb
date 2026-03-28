@@ -1,0 +1,56 @@
+{
+  "@@locale": "fr",
+
+  "appBarTitleAssets": "Actifs",
+  "tooltipRefresh": "Actualiser",
+  "labelRegisterAsset": "Enregistrer un actif",
+  "emptyStateAssets": "Aucun actif enregistré pour l'instant.",
+  "errorLoadAssets": "Impossible de charger les actifs. Veuillez réessayer.",
+  "errorLoadAsset": "Impossible de charger l'actif. Veuillez réessayer.",
+  "labelTraceId": "Trace ID : {traceId}",
+  "@labelTraceId": {
+    "placeholders": {
+      "traceId": { "type": "String" }
+    }
+  },
+
+  "appBarTitleAssetDetail": "Détail de l'actif",
+  "tooltipEdit": "Modifier",
+  "dialogTitleDecommission": "Mettre l'actif hors service",
+  "dialogBodyDecommission": "Êtes-vous sûr de vouloir mettre « {assetName} » hors service ?",
+  "@dialogBodyDecommission": {
+    "placeholders": {
+      "assetName": { "type": "String" }
+    }
+  },
+  "labelReason": "Raison",
+  "hintReason": "ex. Fin de vie utile",
+  "buttonCancel": "Annuler",
+  "buttonDecommission": "Mettre hors service",
+  "labelName": "Nom",
+  "labelAssetType": "Type d'actif",
+  "labelStatus": "Statut",
+  "labelFacility": "Installation",
+  "labelLocation": "Emplacement",
+  "labelSerialNumber": "Numéro de série",
+  "buttonSetLocation": "Définir l'emplacement",
+  "buttonUpdateLocation": "Mettre à jour l'emplacement",
+
+  "appBarTitleRegisterAsset": "Enregistrer un actif",
+  "hintAssetName": "ex. CVC en toiture-3",
+  "hintAssetType": "ex. CVC",
+  "hintFacilityId": "ex. installation-001",
+  "validationNameRequired": "Le nom est requis",
+  "validationAssetTypeRequired": "Le type d'actif est requis",
+  "validationFacilityRequired": "L'installation est requise",
+
+  "appBarTitleEditAsset": "Modifier l'actif",
+  "hintOptional": "Facultatif",
+  "buttonSave": "Enregistrer",
+
+  "appBarTitleSetLocation": "Définir l'emplacement",
+  "labelFacilityId": "ID d'installation",
+  "labelLocationId": "ID d'emplacement",
+  "hintLocationId": "ex. niveau-toit-3",
+  "validationLocationRequired": "L'emplacement est requis"
+}

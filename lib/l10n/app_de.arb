@@ -1,0 +1,56 @@
+{
+  "@@locale": "de",
+
+  "appBarTitleAssets": "Anlagen",
+  "tooltipRefresh": "Aktualisieren",
+  "labelRegisterAsset": "Anlage registrieren",
+  "emptyStateAssets": "Noch keine Anlagen registriert.",
+  "errorLoadAssets": "Anlagen konnten nicht geladen werden. Bitte erneut versuchen.",
+  "errorLoadAsset": "Anlage konnte nicht geladen werden. Bitte erneut versuchen.",
+  "labelTraceId": "Trace-ID: {traceId}",
+  "@labelTraceId": {
+    "placeholders": {
+      "traceId": { "type": "String" }
+    }
+  },
+
+  "appBarTitleAssetDetail": "Anlagendetails",
+  "tooltipEdit": "Bearbeiten",
+  "dialogTitleDecommission": "Anlage stilllegen",
+  "dialogBodyDecommission": "M\u00F6chten Sie \u201E{assetName}\u201C wirklich stilllegen?",
+  "@dialogBodyDecommission": {
+    "placeholders": {
+      "assetName": { "type": "String" }
+    }
+  },
+  "labelReason": "Grund",
+  "hintReason": "z.B. Ende der Nutzungsdauer",
+  "buttonCancel": "Abbrechen",
+  "buttonDecommission": "Stilllegen",
+  "labelName": "Name",
+  "labelAssetType": "Anlagentyp",
+  "labelStatus": "Status",
+  "labelFacility": "Einrichtung",
+  "labelLocation": "Standort",
+  "labelSerialNumber": "Seriennummer",
+  "buttonSetLocation": "Standort festlegen",
+  "buttonUpdateLocation": "Standort aktualisieren",
+
+  "appBarTitleRegisterAsset": "Anlage registrieren",
+  "hintAssetName": "z.B. Dach-HLK-3",
+  "hintAssetType": "z.B. HLK",
+  "hintFacilityId": "z.B. einrichtung-001",
+  "validationNameRequired": "Name ist erforderlich",
+  "validationAssetTypeRequired": "Anlagentyp ist erforderlich",
+  "validationFacilityRequired": "Einrichtung ist erforderlich",
+
+  "appBarTitleEditAsset": "Anlage bearbeiten",
+  "hintOptional": "Optional",
+  "buttonSave": "Speichern",
+
+  "appBarTitleSetLocation": "Standort festlegen",
+  "labelFacilityId": "Einrichtungs-ID",
+  "labelLocationId": "Standort-ID",
+  "hintLocationId": "z.B. dachebene-3",
+  "validationLocationRequired": "Standort ist erforderlich"
+}

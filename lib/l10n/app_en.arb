@@ -1,0 +1,56 @@
+{
+  "@@locale": "en",
+
+  "appBarTitleAssets": "Assets",
+  "tooltipRefresh": "Refresh",
+  "labelRegisterAsset": "Register Asset",
+  "emptyStateAssets": "No Assets registered yet.",
+  "errorLoadAssets": "Failed to load Assets. Please try again.",
+  "errorLoadAsset": "Failed to load Asset. Please try again.",
+  "labelTraceId": "Trace ID: {traceId}",
+  "@labelTraceId": {
+    "placeholders": {
+      "traceId": { "type": "String" }
+    }
+  },
+
+  "appBarTitleAssetDetail": "Asset Detail",
+  "tooltipEdit": "Edit",
+  "dialogTitleDecommission": "Decommission Asset",
+  "dialogBodyDecommission": "Are you sure you want to decommission \"{assetName}\"?",
+  "@dialogBodyDecommission": {
+    "placeholders": {
+      "assetName": { "type": "String" }
+    }
+  },
+  "labelReason": "Reason",
+  "hintReason": "e.g. End of service life",
+  "buttonCancel": "Cancel",
+  "buttonDecommission": "Decommission",
+  "labelName": "Name",
+  "labelAssetType": "Asset Type",
+  "labelStatus": "Status",
+  "labelFacility": "Facility",
+  "labelLocation": "Location",
+  "labelSerialNumber": "Serial Number",
+  "buttonSetLocation": "Set Location",
+  "buttonUpdateLocation": "Update Location",
+
+  "appBarTitleRegisterAsset": "Register Asset",
+  "hintAssetName": "e.g. Rooftop HVAC-3",
+  "hintAssetType": "e.g. HVAC",
+  "hintFacilityId": "e.g. facility-001",
+  "validationNameRequired": "Name is required",
+  "validationAssetTypeRequired": "Asset Type is required",
+  "validationFacilityRequired": "Facility is required",
+
+  "appBarTitleEditAsset": "Edit Asset",
+  "hintOptional": "Optional",
+  "buttonSave": "Save",
+
+  "appBarTitleSetLocation": "Set Location",
+  "labelFacilityId": "Facility ID",
+  "labelLocationId": "Location ID",
+  "hintLocationId": "e.g. roof-level-3",
+  "validationLocationRequired": "Location is required"
+}

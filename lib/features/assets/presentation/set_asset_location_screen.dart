@@ -2,6 +2,7 @@
 // Pre-fills current location if set; validates both fields before submitting.
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
+import 'package:fsi_platform/l10n/app_localizations.dart';
 import '../../../shared/telemetry/telemetry.dart';
 import '../data/assets_repository.dart';
 import '../domain/asset.dart';
@@ -78,8 +79,9 @@ class _SetAssetLocationScreenState
 
   @override
   Widget build(BuildContext context) {
+    final l10n = AppLocalizations.of(context)!;
     return Scaffold(
-      appBar: AppBar(title: const Text('Set Location')),
+      appBar: AppBar(title: Text(l10n.appBarTitleSetLocation)),
       body: SingleChildScrollView(
         padding: const EdgeInsets.all(24),
         child: Form(
@@ -90,24 +92,24 @@ class _SetAssetLocationScreenState
               TextFormField(
                 key: const Key('facilityIdField'),
                 controller: _facilityIdController,
-                decoration: const InputDecoration(
-                  labelText: 'Facility ID',
-                  hintText: 'e.g. facility-001',
+                decoration: InputDecoration(
+                  labelText: l10n.labelFacilityId,
+                  hintText: l10n.hintFacilityId,
                 ),
                 validator: (v) => (v == null || v.trim().isEmpty)
-                    ? 'Facility is required'
+                    ? l10n.validationFacilityRequired
                     : null,
               ),
               const SizedBox(height: 16),
               TextFormField(
                 key: const Key('locationIdField'),
                 controller: _locationIdController,
-                decoration: const InputDecoration(
-                  labelText: 'Location ID',
-                  hintText: 'e.g. roof-level-3',
+                decoration: InputDecoration(
+                  labelText: l10n.labelLocationId,
+                  hintText: l10n.hintLocationId,
                 ),
                 validator: (v) => (v == null || v.trim().isEmpty)
-                    ? 'Location is required'
+                    ? l10n.validationLocationRequired
                     : null,
               ),
               const SizedBox(height: 32),
@@ -131,7 +133,7 @@ class _SetAssetLocationScreenState
                         const SizedBox(height: 4),
                         SelectableText(
                           key: const Key('traceId'),
-                          'Trace ID: ${_serverError!.traceId}',
+                          l10n.labelTraceId(_serverError!.traceId!),
                           style: Theme.of(context)
                               .textTheme
                               .bodySmall
@@ -152,7 +154,7 @@ class _SetAssetLocationScreenState
                         width: 20,
                         child: CircularProgressIndicator(strokeWidth: 2),
                       )
-                    : const Text('Save'),
+                    : Text(l10n.buttonSetLocation),
               ),
             ],
           ),

@@ -5,6 +5,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:go_router/go_router.dart';
+import 'package:fsi_platform/l10n/app_localizations.dart';
 import '../../../shared/telemetry/telemetry.dart';
 import '../data/assets_repository.dart';
 import '../domain/asset.dart';
@@ -52,18 +53,19 @@ class _AssetDetailScreenState extends ConsumerState<AssetDetailScreen> {
 
   @override
   Widget build(BuildContext context) {
+    final l10n = AppLocalizations.of(context)!;
     final assetAsync = ref.watch(assetDetailProvider(widget.assetId));
 
     return Scaffold(
       appBar: AppBar(
-        title: const Text('Asset Detail'),
+        title: Text(l10n.appBarTitleAssetDetail),
         actions: [
           assetAsync.whenOrNull(
             data: (asset) => !asset.isDecommissioned
                 ? IconButton(
                     key: const Key('editButton'),
                     icon: const Icon(Icons.edit_outlined),
-                    tooltip: 'Edit',
+                    tooltip: l10n.tooltipEdit,
                     onPressed: () => context
                         .push('/assets/${widget.assetId}/edit')
                         .then((_) => ref.invalidate(
@@ -114,22 +116,23 @@ class _DecommissionDialogState extends State<_DecommissionDialog> {
 
   @override
   Widget build(BuildContext context) {
+    final l10n = AppLocalizations.of(context)!;
     return AlertDialog(
       key: const Key('decommissionDialog'),
-      title: const Text('Decommission Asset'),
+      title: Text(l10n.dialogTitleDecommission),
       content: SingleChildScrollView(
         child: Column(
           mainAxisSize: MainAxisSize.min,
           crossAxisAlignment: CrossAxisAlignment.start,
           children: [
-            Text('Are you sure you want to decommission "${widget.assetName}"?'),
+            Text(l10n.dialogBodyDecommission(widget.assetName)),
             const SizedBox(height: 16),
             TextField(
               key: const Key('decommissionReasonField'),
               controller: _reasonController,
-              decoration: const InputDecoration(
-                labelText: 'Reason',
-                hintText: 'e.g. End of service life',
+              decoration: InputDecoration(
+                labelText: l10n.labelReason,
+                hintText: l10n.hintReason,
               ),
               autofocus: true,
             ),
@@ -140,13 +143,13 @@ class _DecommissionDialogState extends State<_DecommissionDialog> {
         TextButton(
           key: const Key('cancelDecommissionButton'),
           onPressed: () => Navigator.of(context).pop(null),
-          child: const Text('Cancel'),
+          child: Text(l10n.buttonCancel),
         ),
         FilledButton(
           key: const Key('confirmDecommissionButton'),
           style: FilledButton.styleFrom(backgroundColor: Colors.red),
           onPressed: () => Navigator.of(context).pop(_reasonController.text.trim()),
-          child: const Text('Decommission'),
+          child: Text(l10n.buttonDecommission),
         ),
       ],
     );
@@ -166,6 +169,7 @@ class _AssetDetailView extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+    final l10n = AppLocalizations.of(context)!;
     return SingleChildScrollView(
       padding: const EdgeInsets.all(24),
       child: Column(
@@ -173,28 +177,28 @@ class _AssetDetailView extends StatelessWidget {
         children: [
           _DetailCard(
             children: [
-              _DetailRow(label: 'Name', value: asset.name, valueKey: 'assetName'),
+              _DetailRow(label: l10n.labelName, value: asset.name, valueKey: 'assetName'),
               // Tenant Value — never canonical (ADR-0004)
               _DetailRow(
-                  label: 'Asset Type',
+                  label: l10n.labelAssetType,
                   value: asset.displayAssetType,
                   valueKey: 'assetType'),
               _DetailRow(
-                  label: 'Status',
+                  label: l10n.labelStatus,
                   value: asset.displayStatus,
                   valueKey: 'assetStatus'),
               _DetailRow(
-                  label: 'Facility',
+                  label: l10n.labelFacility,
                   value: asset.facilityId,
                   valueKey: 'facilityId'),
               if (asset.locationId != null)
                 _DetailRow(
-                    label: 'Location',
+                    label: l10n.labelLocation,
                     value: asset.locationId!,
                     valueKey: 'locationId'),
               if (asset.serialNumber != null)
                 _DetailRow(
-                    label: 'Serial Number',
+                    label: l10n.labelSerialNumber,
                     value: asset.serialNumber!,
                     valueKey: 'serialNumber'),
             ],
@@ -204,7 +208,9 @@ class _AssetDetailView extends StatelessWidget {
             key: const Key('setLocationButton'),
             onPressed: onSetLocation,
             icon: const Icon(Icons.location_on_outlined),
-            label: Text(asset.locationId == null ? 'Set Location' : 'Update Location'),
+            label: Text(asset.locationId == null
+                ? l10n.buttonSetLocation
+                : l10n.buttonUpdateLocation),
           ),
           if (!asset.isDecommissioned) ...[
             const SizedBox(height: 12),
@@ -213,7 +219,7 @@ class _AssetDetailView extends StatelessWidget {
               onPressed: onDecommission,
               icon: const Icon(Icons.archive_outlined),
               style: OutlinedButton.styleFrom(foregroundColor: Colors.red),
-              label: const Text('Decommission'),
+              label: Text(l10n.buttonDecommission),
             ),
           ],
         ],
@@ -285,6 +291,7 @@ class _ErrorView extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+    final l10n = AppLocalizations.of(context)!;
     final apiError =
         error is AssetsApiException ? error as AssetsApiException : null;
     return Center(
@@ -297,14 +304,14 @@ class _ErrorView extends StatelessWidget {
             const SizedBox(height: 16),
             Text(
               key: const Key('errorMessage'),
-              apiError?.detail ?? 'Failed to load Asset. Please try again.',
+              apiError?.detail ?? l10n.errorLoadAsset,
               textAlign: TextAlign.center,
             ),
             if (apiError?.traceId != null) ...[
               const SizedBox(height: 8),
               SelectableText(
                 key: const Key('traceId'),
-                'Trace ID: ${apiError!.traceId}',
+                l10n.labelTraceId(apiError!.traceId!),
                 style: Theme.of(context).textTheme.bodySmall,
               ),
             ],

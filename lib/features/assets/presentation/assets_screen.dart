@@ -4,7 +4,9 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:go_router/go_router.dart';
+import 'package:fsi_platform/l10n/app_localizations.dart';
 import '../../../shared/telemetry/telemetry.dart';
+import '../../../shared/widgets/language_selector.dart';
 import '../data/assets_repository.dart';
 import '../domain/asset.dart';
 import 'assets_providers.dart';
@@ -30,17 +32,19 @@ class _AssetsScreenState extends ConsumerState<AssetsScreen> {
 
   @override
   Widget build(BuildContext context) {
+    final l10n = AppLocalizations.of(context)!;
     final assetsAsync = ref.watch(assetListProvider);
 
     return Scaffold(
       appBar: AppBar(
-        title: const Text('Assets'),
+        title: Text(l10n.appBarTitleAssets),
         actions: [
           IconButton(
-            tooltip: 'Refresh',
+            tooltip: l10n.tooltipRefresh,
             icon: const Icon(Icons.refresh),
             onPressed: () => ref.read(assetListProvider.notifier).refresh(),
           ),
+          const LanguageSelector(),
         ],
       ),
       floatingActionButton: FloatingActionButton.extended(
@@ -49,7 +53,7 @@ class _AssetsScreenState extends ConsumerState<AssetsScreen> {
           ref.read(assetListProvider.notifier).refresh();
         }),
         icon: const Icon(Icons.add),
-        label: const Text('Register Asset'),
+        label: Text(l10n.labelRegisterAsset),
       ),
       body: assetsAsync.when(
         loading: () => const Center(
@@ -115,16 +119,17 @@ class _EmptyView extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return const Center(
+    final l10n = AppLocalizations.of(context)!;
+    return Center(
       child: Column(
         mainAxisSize: MainAxisSize.min,
         children: [
-          Icon(Icons.inventory_2_outlined, size: 64, color: Colors.grey),
-          SizedBox(height: 16),
+          const Icon(Icons.inventory_2_outlined, size: 64, color: Colors.grey),
+          const SizedBox(height: 16),
           Text(
-            key: Key('emptyStateMessage'),
-            'No Assets registered yet.',
-            style: TextStyle(color: Colors.grey),
+            key: const Key('emptyStateMessage'),
+            l10n.emptyStateAssets,
+            style: const TextStyle(color: Colors.grey),
           ),
         ],
       ),
@@ -139,6 +144,7 @@ class _ErrorView extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+    final l10n = AppLocalizations.of(context)!;
     final apiError = error is AssetsApiException ? error as AssetsApiException : null;
     return Center(
       child: Padding(
@@ -150,14 +156,14 @@ class _ErrorView extends StatelessWidget {
             const SizedBox(height: 16),
             Text(
               key: const Key('errorMessage'),
-              apiError?.detail ?? 'Failed to load Assets. Please try again.',
+              apiError?.detail ?? l10n.errorLoadAssets,
               textAlign: TextAlign.center,
             ),
             if (apiError?.traceId != null) ...[
               const SizedBox(height: 8),
               SelectableText(
                 key: const Key('traceId'),
-                'Trace ID: ${apiError!.traceId}',
+                l10n.labelTraceId(apiError!.traceId!),
                 style: Theme.of(context).textTheme.bodySmall,
               ),
             ],

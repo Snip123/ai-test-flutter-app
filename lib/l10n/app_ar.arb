@@ -1,0 +1,56 @@
+{
+  "@@locale": "ar",
+
+  "appBarTitleAssets": "الأصول",
+  "tooltipRefresh": "تحديث",
+  "labelRegisterAsset": "تسجيل أصل",
+  "emptyStateAssets": "لا توجد أصول مسجلة حتى الآن.",
+  "errorLoadAssets": "فشل تحميل الأصول. يرجى المحاولة مرة أخرى.",
+  "errorLoadAsset": "فشل تحميل الأصل. يرجى المحاولة مرة أخرى.",
+  "labelTraceId": "معرّف التتبع: {traceId}",
+  "@labelTraceId": {
+    "placeholders": {
+      "traceId": { "type": "String" }
+    }
+  },
+
+  "appBarTitleAssetDetail": "تفاصيل الأصل",
+  "tooltipEdit": "تعديل",
+  "dialogTitleDecommission": "إيقاف تشغيل الأصل",
+  "dialogBodyDecommission": "هل أنت متأكد من رغبتك في إيقاف تشغيل \"{assetName}\"؟",
+  "@dialogBodyDecommission": {
+    "placeholders": {
+      "assetName": { "type": "String" }
+    }
+  },
+  "labelReason": "السبب",
+  "hintReason": "مثال: انتهاء العمر التشغيلي",
+  "buttonCancel": "إلغاء",
+  "buttonDecommission": "إيقاف التشغيل",
+  "labelName": "الاسم",
+  "labelAssetType": "نوع الأصل",
+  "labelStatus": "الحالة",
+  "labelFacility": "المنشأة",
+  "labelLocation": "الموقع",
+  "labelSerialNumber": "الرقم التسلسلي",
+  "buttonSetLocation": "تحديد الموقع",
+  "buttonUpdateLocation": "تحديث الموقع",
+
+  "appBarTitleRegisterAsset": "تسجيل أصل",
+  "hintAssetName": "مثال: تكييف السطح-3",
+  "hintAssetType": "مثال: تكييف",
+  "hintFacilityId": "مثال: منشأة-001",
+  "validationNameRequired": "الاسم مطلوب",
+  "validationAssetTypeRequired": "نوع الأصل مطلوب",
+  "validationFacilityRequired": "المنشأة مطلوبة",
+
+  "appBarTitleEditAsset": "تعديل الأصل",
+  "hintOptional": "اختياري",
+  "buttonSave": "حفظ",
+
+  "appBarTitleSetLocation": "تحديد الموقع",
+  "labelFacilityId": "معرّف المنشأة",
+  "labelLocationId": "معرّف الموقع",
+  "hintLocationId": "مثال: مستوى-السطح-3",
+  "validationLocationRequired": "الموقع مطلوب"
+}

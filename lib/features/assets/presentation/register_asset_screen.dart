@@ -3,6 +3,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:go_router/go_router.dart';
+import 'package:fsi_platform/l10n/app_localizations.dart';
 import '../../../shared/telemetry/telemetry.dart';
 import '../data/assets_repository.dart';
 import '../domain/asset.dart';
@@ -61,6 +62,7 @@ class _RegisterAssetScreenState extends ConsumerState<RegisterAssetScreen> {
 
   @override
   Widget build(BuildContext context) {
+    final l10n = AppLocalizations.of(context)!;
     final submitState = ref.watch(registerAssetProvider);
     final isSubmitting = submitState is AsyncLoading;
     final serverError = submitState is AsyncError
@@ -68,7 +70,7 @@ class _RegisterAssetScreenState extends ConsumerState<RegisterAssetScreen> {
         : null;
 
     return Scaffold(
-      appBar: AppBar(title: const Text('Register Asset')),
+      appBar: AppBar(title: Text(l10n.appBarTitleRegisterAsset)),
       body: SingleChildScrollView(
         padding: const EdgeInsets.all(24),
         child: Form(
@@ -79,35 +81,35 @@ class _RegisterAssetScreenState extends ConsumerState<RegisterAssetScreen> {
               TextFormField(
                 key: const Key('nameField'),
                 controller: _nameController,
-                decoration: const InputDecoration(
-                  labelText: 'Name',
-                  hintText: 'e.g. Rooftop HVAC-3',
+                decoration: InputDecoration(
+                  labelText: l10n.labelName,
+                  hintText: l10n.hintAssetName,
                 ),
                 validator: (v) =>
-                    (v == null || v.trim().isEmpty) ? 'Name is required' : null,
+                    (v == null || v.trim().isEmpty) ? l10n.validationNameRequired : null,
               ),
               const SizedBox(height: 16),
               TextFormField(
                 key: const Key('assetTypeField'),
                 controller: _assetTypeController,
-                decoration: const InputDecoration(
-                  labelText: 'Asset Type',
-                  hintText: 'e.g. HVAC',
+                decoration: InputDecoration(
+                  labelText: l10n.labelAssetType,
+                  hintText: l10n.hintAssetType,
                 ),
                 validator: (v) => (v == null || v.trim().isEmpty)
-                    ? 'Asset Type is required'
+                    ? l10n.validationAssetTypeRequired
                     : null,
               ),
               const SizedBox(height: 16),
               TextFormField(
                 key: const Key('facilityIdField'),
                 controller: _facilityIdController,
-                decoration: const InputDecoration(
-                  labelText: 'Facility',
-                  hintText: 'e.g. facility-001',
+                decoration: InputDecoration(
+                  labelText: l10n.labelFacility,
+                  hintText: l10n.hintFacilityId,
                 ),
                 validator: (v) => (v == null || v.trim().isEmpty)
-                    ? 'Facility is required'
+                    ? l10n.validationFacilityRequired
                     : null,
               ),
               const SizedBox(height: 32),
@@ -133,7 +135,7 @@ class _RegisterAssetScreenState extends ConsumerState<RegisterAssetScreen> {
                         const SizedBox(height: 4),
                         SelectableText(
                           key: const Key('traceId'),
-                          'Trace ID: ${serverError.traceId}',
+                          l10n.labelTraceId(serverError.traceId!),
                           style: Theme.of(context)
                               .textTheme
                               .bodySmall
@@ -155,7 +157,7 @@ class _RegisterAssetScreenState extends ConsumerState<RegisterAssetScreen> {
                         width: 20,
                         child: CircularProgressIndicator(strokeWidth: 2),
                       )
-                    : const Text('Register Asset'),
+                    : Text(l10n.labelRegisterAsset),
               ),
             ],
           ),

@@ -3,6 +3,7 @@
 // 422 server errors surface detail + trace ID.
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
+import 'package:fsi_platform/l10n/app_localizations.dart';
 import '../../../shared/telemetry/telemetry.dart';
 import '../data/assets_repository.dart';
 import '../domain/asset.dart';
@@ -65,13 +66,14 @@ class _EditAssetScreenState extends ConsumerState<EditAssetScreen> {
 
   @override
   Widget build(BuildContext context) {
+    final l10n = AppLocalizations.of(context)!;
     final submitState = ref.watch(updateAssetProvider(widget.assetId));
     final isSubmitting = submitState is AsyncLoading;
     final serverError =
         submitState is AsyncError ? submitState.error as AssetsApiException? : null;
 
     return Scaffold(
-      appBar: AppBar(title: const Text('Edit Asset')),
+      appBar: AppBar(title: Text(l10n.appBarTitleEditAsset)),
       body: SingleChildScrollView(
         padding: const EdgeInsets.all(24),
         child: Form(
@@ -82,17 +84,17 @@ class _EditAssetScreenState extends ConsumerState<EditAssetScreen> {
               TextFormField(
                 key: const Key('nameField'),
                 controller: _nameController,
-                decoration: const InputDecoration(labelText: 'Name'),
+                decoration: InputDecoration(labelText: l10n.labelName),
                 validator: (v) =>
-                    (v == null || v.trim().isEmpty) ? 'Name is required' : null,
+                    (v == null || v.trim().isEmpty) ? l10n.validationNameRequired : null,
               ),
               const SizedBox(height: 16),
               TextFormField(
                 key: const Key('serialNumberField'),
                 controller: _serialNumberController,
-                decoration: const InputDecoration(
-                  labelText: 'Serial Number',
-                  hintText: 'Optional',
+                decoration: InputDecoration(
+                  labelText: l10n.labelSerialNumber,
+                  hintText: l10n.hintOptional,
                 ),
               ),
               const SizedBox(height: 32),
@@ -116,7 +118,7 @@ class _EditAssetScreenState extends ConsumerState<EditAssetScreen> {
                         const SizedBox(height: 4),
                         SelectableText(
                           key: const Key('traceId'),
-                          'Trace ID: ${serverError.traceId}',
+                          l10n.labelTraceId(serverError.traceId!),
                           style: Theme.of(context)
                               .textTheme
                               .bodySmall
@@ -137,7 +139,7 @@ class _EditAssetScreenState extends ConsumerState<EditAssetScreen> {
                         width: 20,
                         child: CircularProgressIndicator(strokeWidth: 2),
                       )
-                    : const Text('Save'),
+                    : Text(l10n.buttonSave),
               ),
             ],
           ),
