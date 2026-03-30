@@ -5,7 +5,7 @@ import 'app/router.dart';
 import 'app/theme.dart';
 import 'shared/locale/locale_provider.dart';
 import 'shared/telemetry/telemetry.dart';
-import 'package:fsi_platform/l10n/app_localizations.dart';
+import 'package:platform_main/l10n/app_localizations.dart';
 
 void main() async {
   WidgetsFlutterBinding.ensureInitialized();
@@ -30,8 +30,8 @@ class FsiApp extends ConsumerWidget {
   Widget build(BuildContext context, WidgetRef ref) {
     final locale = ref.watch(localeProvider);
     return MaterialApp.router(
-      title: 'FSI Platform',
-      theme: fsiTheme,
+      title: 'EAM/CMMS Platform',
+      theme: appTheme,
       routerConfig: appRouter,
       locale: locale,
       localizationsDelegates: AppLocalizations.localizationsDelegates,

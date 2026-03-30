@@ -4,7 +4,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:go_router/go_router.dart';
-import 'package:fsi_platform/l10n/app_localizations.dart';
+import 'package:platform_main/l10n/app_localizations.dart';
 import '../../../shared/telemetry/telemetry.dart';
 import '../../../shared/widgets/language_selector.dart';
 import '../data/assets_repository.dart';

@@ -1,6 +1,6 @@
 # BDD Feature Specs — ai-test-flutter-app
 
-Gherkin feature files for all FSI Platform Flutter features.
+Gherkin feature files for all EAM/CMMS Platform Flutter features.
 
 - One `.feature` file per user-facing feature
 - All terms must match the platform ubiquitous language (ADR-0003)

@@ -1,10 +1,10 @@
-// Design system tokens — placeholder for the shared FSI design system.
-// Replace with the fsi-design-system package once extracted (ADR-0006).
+// Design system tokens — placeholder for the shared platform design system.
+// Replace with the platform-design-system package once extracted (ADR-0006).
 import 'package:flutter/material.dart';
 
-final fsiTheme = ThemeData(
+final appTheme = ThemeData(
   colorScheme: ColorScheme.fromSeed(
-    seedColor: const Color(0xFF1565C0), // FSI brand blue (placeholder)
+    seedColor: const Color(0xFF1565C0), // platform brand blue (placeholder)
   ),
   useMaterial3: true,
 );

@@ -15,12 +15,12 @@ class AppTelemetry {
     final provider = otel_sdk.TracerProviderBase(
       processors: [processor],
       resource: otel_sdk.Resource([
-        otel.Attribute.fromString('service.name', 'fsi-platform-flutter'),
+        otel.Attribute.fromString('service.name', 'cmms-platform-flutter'),
         otel.Attribute.fromString('environment', environment),
       ]),
     );
     otel.registerGlobalTracerProvider(provider);
-    _tracer = provider.getTracer('fsi-platform-flutter', version: '1.0.0');
+    _tracer = provider.getTracer('cmms-platform-flutter', version: '1.0.0');
   }
 
   /// Start a span. Always set tenant_id. Call [span.end()] when done.

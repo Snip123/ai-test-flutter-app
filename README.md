@@ -5,7 +5,7 @@
 
 ## Responsibility
 
-All user-facing UX for the FSI EAM/CMMS platform — every feature on every platform, from a single Dart codebase.
+All user-facing UX for the EAM/CMMS platform — every feature on every platform, from a single Dart codebase.
 
 ## Platform standards
 

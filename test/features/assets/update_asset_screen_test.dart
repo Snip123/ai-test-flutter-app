@@ -5,11 +5,11 @@ import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:flutter_test/flutter_test.dart';
 import 'package:mocktail/mocktail.dart';
-import 'package:fsi_platform/features/assets/data/assets_repository.dart';
-import 'package:fsi_platform/features/assets/domain/asset.dart';
-import 'package:fsi_platform/features/assets/presentation/edit_asset_screen.dart';
-import 'package:fsi_platform/app/theme.dart';
-import 'package:fsi_platform/shared/telemetry/telemetry.dart';
+import 'package:platform_main/features/assets/data/assets_repository.dart';
+import 'package:platform_main/features/assets/domain/asset.dart';
+import 'package:platform_main/features/assets/presentation/edit_asset_screen.dart';
+import 'package:platform_main/app/theme.dart';
+import 'package:platform_main/shared/telemetry/telemetry.dart';
 
 class MockAssetsRepository extends Mock implements AssetsRepository {}
 
@@ -34,7 +34,7 @@ Future<void> _pumpEditScreen(
     ProviderScope(
       overrides: [assetsRepositoryProvider.overrideWithValue(repo)],
       child: MaterialApp(
-        theme: fsiTheme,
+        theme: appTheme,
         home: EditAssetScreen(assetId: 'asset-001', initialAsset: initial),
       ),
     ),

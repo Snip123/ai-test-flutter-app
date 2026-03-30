@@ -22,7 +22,7 @@ This app follows the platform constitution. Key references — load on demand:
 
 **Role:** Single Flutter codebase serving web (Chrome), mobile (iOS/Android), and desktop (macOS).
 **Owned by:** Platform Guild
-**Responsibility:** All user-facing UX for the FSI EAM/CMMS platform — every feature on every platform.
+**Responsibility:** All user-facing UX for the EAM/CMMS platform — every feature on every platform.
 
 ### Local docs
 - Local ADRs: @docs/adr/
@@ -50,7 +50,7 @@ lib/
 ├── main.dart                     — OTel init, ProviderScope, MaterialApp.router
 ├── app/
 │   ├── router.dart               — GoRouter routes
-│   └── theme.dart                — Design tokens (placeholder for fsi-design-system)
+│   └── theme.dart                — Design tokens (placeholder for platform-design-system)
 ├── features/
 │   └── {feature}/
 │       ├── data/                 — Repository (Dio calls → domain models)
